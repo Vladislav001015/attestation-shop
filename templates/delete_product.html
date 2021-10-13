@@ -1,0 +1,15 @@
+{% extends 'list.html' %}
+{% block content %}
+ <hr style="background-color: red;  margin-top: 60px;">
+<h1 style="    font-size: 45px; text-align: center; margin-bottom: 40px;">Are you sure?</h1>
+<form method="post" style="text-align: center; margin-bottom: 40px;">
+    {% csrf_token %}
+    <input class="btn btn-primary" type="submit" value="Yes" style="background-color: red;">
+    <a class="btn" href="{% url 'index' %}" role = "button" style="background-color: green;">No</a>
+
+
+
+</form>
+ <hr style="background-color: red; margin-bottom: 60px;">
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'list.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+
+.p_profile{
+    color: black !important;
+    font-size: 20px;
+    margin-bottom: 25px !important;
+
+
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.b_profile {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000 ;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+  margin-block: 10px;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+</style>
+
+<div class="container">
+
+<div class="card_1">
+     <h1 style="padding-bottom:20px;">{{ request.user }}</h1>
+     <p class="p_profile">Имя: {{ request.user.first_name }}</p>
+     <p class="p_profile">Фамилия: {{ request.user.last_name }}</p>
+    <p class="p_profile">Email: {{ request.user.email }}</p>
+     <p class="p_profile">Дата создания: {{ request.user.date_joined.year }}:{{ request.user.date_joined.month }}:{{ request.user.date_joined.day }}</p>
+     <p class="p_profile">User_name: {{ request.user.username }}</p>
+
+    <a href=" {% url 'delete_account' user.id %}"><button class="b_profile" style="background-color: red; padding: 4px; ">Удалить</button></a>
+
+    <a href = "{% url 'logout' %}"> <button class="b_profile" style="background-color: green;">Выйти</button></a>
+
+</div>
+
+    <div class="card1">
+        {% if request.user.email != "admin@admin.com" %}
+            {% if request.user.image.url %}
+                <img src="{{ request.user.image.url }}" style="width: 500px; height:500px; " alt="Photo" />
+            {% else %}
+                <img src="{% static 'images/ava.jpg' %}" style="width: 500px; height:500px; " alt="Photo" />
+            {% endif %}
+        {% else %}
+            <img src="{% static 'images/ava.jpg' %}" style="width: 500px; height:500px; " alt="Photo" />
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

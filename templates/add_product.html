@@ -1,0 +1,21 @@
+{% extends 'list.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form method="post" enctype="multipart/form-data" style="border-radius: 2px; border: 10px solid white; border-radius: 20px; padding: 28px; margin-block: 35px;">
+    {% csrf_token %}
+
+    <h4>{{ form.title|as_crispy_field }}</h4>
+    <h4>{{ form.descriptions|as_crispy_field }}</h4>
+    <h4>{{ form.price|as_crispy_field }}</h4>
+    <h4>{{ form.quantity|as_crispy_field }}</h4>
+
+    <h4>{{ form.category|as_crispy_field }}</h4>
+
+    <h4>{{ form.image|as_crispy_field }}</h4>
+
+
+
+    <input class="btn btn-primary" type="submit" value="Create" style="font-size: 35px; color: black; border-color: chartreuse;     margin-top: 25px; background-color: chartreuse;">
+
+</form>
+{% endblock %}

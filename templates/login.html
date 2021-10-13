@@ -1,0 +1,22 @@
+{% extends 'list.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <h1>Log in</h1>
+    <form method="post" enctype="multipart/form-data" style="border-radius: 2px; border: 10px solid white; border-radius: 20px; padding: 28px; margin-block: 35px;">
+        {% csrf_token %}
+
+
+        <h4>{{ form.username|as_crispy_field }}</h4>
+        <h4>{{ form.password|as_crispy_field }}</h4>
+           <input class="btn btn-primary" type="submit" value="Log in" style="font-size: 35px; color: black; border-color: chartreuse;     margin-top: 35px;margin-bottom:35px; background-color: chartreuse;">
+
+
+</form>
+<hr style="background-color: red;">
+<p class="grid-first_title" style="margin-bottom: 0;"><a href="{% url 'password_reset' %}" style="text-decoration:none; color: #333333; font-size: 25px;">Forgotten your password?</a></p>
+<hr style="background-color: red;">
+
+
+{% endblock %}

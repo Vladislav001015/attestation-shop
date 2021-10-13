@@ -1,0 +1,25 @@
+{% extends 'list.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <h1>Sign up</h1>
+    <form method="post" enctype="multipart/form-data" style="border-radius: 2px; border: 10px solid white; border-radius: 20px; padding: 28px; margin-block: 35px;">
+    {% csrf_token %}
+        <h4>{{ form.username|as_crispy_field }}</h4>
+        <h4>{{ form.email|as_crispy_field }}</h4>
+        <h4>{{ form.first_name|as_crispy_field }}</h4>
+        <h4>{{ form.last_name|as_crispy_field }}</h4>
+
+
+         <h4>{{ form.password|as_crispy_field }}</h4>
+
+        <h4>{{ form.password_confirmation|as_crispy_field }}</h4>
+        <h4>{{ form.image|as_crispy_field }}</h4>
+
+    <input class="btn btn-primary" type="submit" value="Sign ip" style="font-size: 35px; color: black; border-color: chartreuse;     margin-top: 25px; background-color: chartreuse;">
+
+</form>
+
+
+{% endblock %}
